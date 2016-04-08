@@ -2,20 +2,19 @@
 
 The output is always going to be in hdfs format. We will have nested directory structures.
 
-So Each aggregation will have its own directory. Inside this directory we have multiple directories with timestamp as part of the name. This timestamp represents the timestamp of the aggregation. Each timestamp directory has a bunch of files. It could also have no
+Each aggregation will have its own directory. Inside this directory we have multiple directories with timestamp as part of the name. This timestamp represents the timestamp of the aggregation. Each timestamp directory has a bunch of files. It could also have no
 files or empty files. We are only interested in filenames that start with part-.
 
-So a single data file might be in the location
+A single data file might be in the location
 /output/tweet-aggregation/t-14856235000/part-00032
 
 Another output file could be at
 /output/hashtag-aggregation/h-14856235000/part-00000
 
 Note that the timestamp is in milliseconds.
-So for any ttimestamp you will further have to aggregate results from all part- files inside.
-for realtime visualization, new timestamp directories will keep getting added at regular intervals.
+For any timestamp, you will further have to aggregate results from all part- files inside. For realtime visualization, new timestamp directories will keep getting added at regular intervals.
 
-Each part file will have tsv format(tab separated values). non-tab chacters will be part of data The first column will always be keywords or strings. These may not always be quoted strings. 
+Each part file will have tsv format(tab separated values). Non-tab chacters will be part of data The first column will always be keywords or strings. These may not always be quoted strings. 
 
 The rest of the columns will most likely have floating points or integers except in some cases such as bigrams where second column will
 also be a word. 
